@@ -1,4 +1,5 @@
 import 'package:Online_Shop/constants.dart';
+import 'package:Online_Shop/screens/home/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -7,6 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
+      body: Body(),
     );
   }
 
