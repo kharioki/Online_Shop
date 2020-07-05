@@ -1,6 +1,7 @@
 import 'package:Online_Shop/constants.dart';
 import 'package:Online_Shop/models/Product.dart';
 import 'package:Online_Shop/screens/home/components/categories.dart';
+import 'package:Online_Shop/screens/home/components/item_card.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -27,53 +28,15 @@ class Body extends StatelessWidget {
               itemCount: products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
+                mainAxisSpacing: kDefaultPaddin,
+                crossAxisSpacing: kDefaultPaddin,
                 childAspectRatio: 0.75,
               ),
-              itemBuilder: (context, index) => ItemCard(),
+              itemBuilder: (context, index) => ItemCard(
+                product: products[index],
+                press: () {},
+              ),
             ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class ItemCard extends StatelessWidget {
-  final Product product;
-  final Function press;
-
-  const ItemCard({
-    Key key,
-    this.product,
-    this.press,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          padding: EdgeInsets.all(kDefaultPaddin),
-          // height: 180,
-          // width: 160,
-          decoration: BoxDecoration(
-            color: products[0].color,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Image.asset(products[0].image),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
-          child: Text(
-            products[0].title,
-            style: TextStyle(color: kTextLightColor),
-          ),
-        ),
-        Text(
-          '\$234',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
           ),
         ),
       ],
