@@ -1,5 +1,7 @@
 import 'package:Online_Shop/constants.dart';
 import 'package:Online_Shop/models/Product.dart';
+import 'package:Online_Shop/screens/details/components/color_and_size.dart';
+import 'package:Online_Shop/screens/details/components/product_title_with_image.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -21,7 +23,12 @@ class Body extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.only(top: size.height * 0.3),
-                  height: 500,
+                  padding: EdgeInsets.only(
+                    top: size.height * 0.12,
+                    left: kDefaultPaddin,
+                    right: kDefaultPaddin,
+                  ),
+                  // height: 500,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -29,58 +36,13 @@ class Body extends StatelessWidget {
                       topRight: Radius.circular(24),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Aristocratic Hand Bag',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        product.title,
-                        style: Theme.of(context).textTheme.headline4.copyWith(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: kDefaultPaddin),
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Price',
-                                ),
-                                TextSpan(
-                                  text: '\$${product.price}',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline4
-                                      .copyWith(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(width: kDefaultPaddin),
-                          Expanded(
-                            child: Image.asset(
-                              product.image,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ],
-                      ),
+                      ColorAndSize(product: product),
                     ],
                   ),
                 ),
+                ProductTitleWithImage(product: product),
               ],
             ),
           ),
